@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { PostDTO } from '../Models/post.dto';
 import { SharedService } from './shared.service';
 
-interface updateResponse {
+export interface updateResponse {
   affected: number;
 }
 
