@@ -97,4 +97,40 @@ describe('HeaderComponent', () => {
         expect(spy).toHaveBeenCalledWith('profile');
     });
 
+    it('should has a header with 4 links (Dashboard, Home, Login and Register) if showNoAuthSection is true', () => {
+        component.showAuthSection = false;
+        component.showNoAuthSection = true;
+
+        fixture.detectChanges();
+        
+        const buttons = fixture.nativeElement.querySelectorAll('button');
+        expect(buttons.length).toBe(4);
+
+        const buttonHTML = [...buttons].map(button => button.textContent.trim());
+
+        expect(buttonHTML).toContain('Dashboard');
+        expect(buttonHTML).toContain('Home');
+        expect(buttonHTML).toContain('Login');
+        expect(buttonHTML).toContain('Register');
+    })
+
+    it('should has a header with 6 links (Dashboard, Home, Admin posts, Admin categories, Profile, Logout) if showAuthSection is true', () => {
+        component.showAuthSection = true;
+        component.showNoAuthSection = false;
+
+        fixture.detectChanges();
+
+        const buttons = fixture.nativeElement.querySelectorAll('button');
+        expect(buttons.length).toBe(6);
+
+        const buttonHTML = [...buttons].map(button => button.textContent.trim());
+
+        expect(buttonHTML).toContain('Dashboard');
+        expect(buttonHTML).toContain('Home');
+        expect(buttonHTML).toContain('Admin posts');
+        expect(buttonHTML).toContain('Admin categories');
+        expect(buttonHTML).toContain('Profile');
+        expect(buttonHTML).toContain('Logout');
+    })
+
 });
