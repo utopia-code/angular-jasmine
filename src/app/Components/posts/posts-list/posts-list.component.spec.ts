@@ -81,6 +81,7 @@ const postsList: PostDTO[] = [
 describe('PostsListComponent', () => {
     let component: PostsListComponent;
     let fixture: ComponentFixture<PostsListComponent>;
+    let localStorageService: LocalStorageService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -98,7 +99,7 @@ describe('PostsListComponent', () => {
                 ])
             ],
             declarations: [PostsListComponent],
-            providers: [PostService, { provide: LocalStorageService, useClass: TemporalLocalStorageService }],
+            providers: [PostService, LocalStorageService],
             schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
         }).compileComponents();
     });
@@ -106,15 +107,17 @@ describe('PostsListComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PostsListComponent);
         component = fixture.componentInstance;
+        localStorageService = TestBed.inject(LocalStorageService);
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('Ej4 - Test5 - should create', () => {
         expect(component).toBeTruthy();
     });
 
-    it('loadPosts success from subscription', () => {
+    it('Ej4 - Test6 - loadPosts success from subscription', () => {
         const postService = fixture.debugElement.injector.get(PostService);
+        localStorageService.set('user_id', '1');
         const spy = spyOn(postService, 'getPostsByUserId').and.returnValue(of(postsList));
         component['loadPosts']();
         expect(spy).toHaveBeenCalledWith('1');
@@ -122,14 +125,14 @@ describe('PostsListComponent', () => {
         
     });
 
-    it('createCategory() should navigate to user/post', () => {
+    it('Ej4 - Test7 - should createPost success', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.createPost();
         expect(spy).toHaveBeenCalledWith('/user/post/');
     });
 
-    it('updateCategory() should navigate to user/post/1', () => {
+    it('Ej4 - Test8 - should updatePost success', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.updatePost('1');

@@ -51,53 +51,53 @@ describe('HeaderComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('Ej2 - Test1 - should create', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should navigate to home', () => {
+    it('Ej2 - Test2 - should navigate to home', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.navigateTo('home');
         expect(spy).toHaveBeenCalledWith('home');
     });
     
-    it('should navigate to login', () => {
+    it('Ej2 - Test3 - should navigate to login', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.navigateTo('login');
         expect(spy).toHaveBeenCalledWith('login');
     });
 
-    it('should navigate to register', () => {
+    it('Ej2 - Test4 - should navigate to register', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.navigateTo('register');
         expect(spy).toHaveBeenCalledWith('register');
     });
 
-    it('should navigate to posts', () => {
+    it('Ej2 - Test5 - should navigate to posts', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.navigateTo('posts');
         expect(spy).toHaveBeenCalledWith('posts');
     });
 
-    it('should navigate to categories', () => {
+    it('Ej2 - Test6 - should navigate to categories', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.navigateTo('categories');
         expect(spy).toHaveBeenCalledWith('categories');
     });
 
-    it('should navigate to profile', () => {
+    it('Ej2 - Test7 - should navigate to profile', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.navigateTo('profile');
         expect(spy).toHaveBeenCalledWith('profile');
     });
 
-    it('should has a header with 4 links (Dashboard, Home, Login and Register) if showNoAuthSection is true', () => {
+    it('Ej5 - Test1 - should no login and get 4 buttons (Dashboard, Home, Login and Register)', () => {
         component.showAuthSection = false;
         component.showNoAuthSection = true;
 
@@ -114,7 +114,7 @@ describe('HeaderComponent', () => {
         expect(buttonHTML).toContain('Register');
     })
 
-    it('should has a header with 6 links (Dashboard, Home, Admin posts, Admin categories, Profile, Logout) if showAuthSection is true', () => {
+    it('Ej5 - Test2 - should login and get 6 buttons (Dashboard, Home, Admin posts, Admin categories, Profile, Logout)', () => {
         component.showAuthSection = true;
         component.showNoAuthSection = false;
 

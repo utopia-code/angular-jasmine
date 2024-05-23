@@ -49,11 +49,11 @@ describe('CategoryService', () => {
         httpMock.verify();
     });
 
-    it('should be created', () => {
+    it('Ej3 - Test1 - should be created', () => {
         expect(service).toBeTruthy();
     });
 
-    it('GET method and getCategoriesByUserId return a list of categories', () => {
+    it('Ej3 - Test2 - GET method and getCategoriesByUserId return a list of categories', () => {
         service.getCategoriesByUserId('1').subscribe((resp: CategoryDTO[]) => {
             expect(resp).toEqual(categoriesList);
         });
@@ -65,7 +65,7 @@ describe('CategoryService', () => {
         req.flush(categoriesList);
     });
 
-    it('POST method and createCategory create a new item of categories', () => {
+    it('Ej3 - Test3 - POST method and create new category', () => {
         let newCategory: CategoryDTO = {userId: '', categoryId: '4', css_color: '', description: '', title: ''};
         let responseCategory: CategoryDTO = {userId: '', categoryId: '4', css_color: '', description: '', title: ''};
         
@@ -81,7 +81,7 @@ describe('CategoryService', () => {
         req.flush(responseCategory);
     });
 
-    it('GET method and getCategoryById return an item of categories', () => {
+    it('Ej3 - Test4 - GET method and getCategoryById return a category', () => {
         service.getCategoryById('1').subscribe((resp: CategoryDTO) => {
             expect(resp).toEqual(categoriesList[0]);
         });
@@ -93,7 +93,7 @@ describe('CategoryService', () => {
         req.flush(categoriesList[0]);
     });
 
-    it('PUT method and updateCategory update an item of categories', () => {
+    it('Ej3 - Test5 - PUT method and update category', () => {
         let currentCategory: CategoryDTO = {userId: '', categoryId: '1', css_color: '', description: '', title: ''};
         let updatedCategory: CategoryDTO = {userId: '', categoryId: '1', css_color: '#123456', description: '', title: ''};
         
@@ -109,7 +109,7 @@ describe('CategoryService', () => {
         req.flush(updatedCategory);
     });
 
-    it('DELETE method and deteleCategory delete an item of categories list', () => {
+    it('Ej3 - Test6 - DELETE method and detele an existing category', () => {
         const deleteResponse: deleteResponse = { affected: 1 };
 
         service.deleteCategory('1').subscribe((resp: deleteResponse) => {

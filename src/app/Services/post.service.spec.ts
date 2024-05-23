@@ -88,11 +88,11 @@ describe('PostService', () => {
         httpMock.verify();
     });
 
-    it('should be created', () => {
+    it('Ej3 - Test1 - should be created', () => {
         expect(service).toBeTruthy();
     })
 
-    it('GET method and getPosts return all posts', () => {
+    it('Ej3 - Test2 - GET method and getPosts return a list of posts', () => {
         service.getPosts().subscribe((resp: PostDTO[]) => {
             expect(resp).toEqual(postsList);
         });
@@ -104,7 +104,7 @@ describe('PostService', () => {
         req.flush(postsList);
     });
 
-    it('GET method and getPostsByUserId return a list of posts', () => {
+    it('Ej3 - Test3 - GET method and getPostsByUserId return a list of posts', () => {
         service.getPostsByUserId('1').subscribe((resp: PostDTO[]) => {
             expect(resp).toEqual(postsList);
         });
@@ -116,7 +116,7 @@ describe('PostService', () => {
         req.flush(postsList);
     });
 
-    it('POST method and createPost create a new item of posts', () => {
+    it('Ej3 - Test4 - POST method and create new post', () => {
         let newPost: PostDTO = {
             postId: '4',
             title: '',
@@ -152,7 +152,7 @@ describe('PostService', () => {
         req.flush(responsePost);
     });
 
-    it('GET method and getPostById return an item of posts', () => {
+    it('Ej3 - Test5 - GET method and getPostById return a post', () => {
         service.getPostById('1').subscribe((resp: PostDTO) => {
             expect(resp).toEqual(postsList[0]);
         });
@@ -164,7 +164,7 @@ describe('PostService', () => {
         req.flush(postsList[0]);
     });
 
-    it('PUT method and updateCategory update an item of categories', () => {
+    it('Ej3 - Test6 - PUT method and update post', () => {
         let currentPost: PostDTO = {
             postId: '3',
             title: '',
@@ -200,7 +200,7 @@ describe('PostService', () => {
         req.flush(updatedPost);
     });
 
-    it('PUT method and likePost return a new value of likes', () => {
+    it('Ej3 - Test7 - PUT method and update post by likePost property', () => {
         const updateResponse: updateResponse = { affected: 1 };
 
         service.likePost('2').subscribe((resp: updateResponse) => {
@@ -215,7 +215,7 @@ describe('PostService', () => {
         req.flush(updateResponse);
     });
 
-    it('PUT method and dislikePost return a new value of likes', () => {
+    it('Ej3 - Test8 - PUT method and update post by dislikePost property', () => {
         const updateResponse: updateResponse = { affected: 1 };
 
         service.dislikePost('2').subscribe((resp: updateResponse) => {
@@ -230,7 +230,7 @@ describe('PostService', () => {
         req.flush(updateResponse);
     });
 
-    it('DELETE method and deletePost delete an item of post list', () => {
+    it('Ej3 - Test9 - DELETE method and delete an existing post', () => {
         const deleteResponse: deleteResponse = { affected: 1 };
 
         service.deletePost('1').subscribe((resp: deleteResponse) => {

@@ -11,15 +11,10 @@ import { CategoriesListComponent } from "./categories-list.component";
 
 class TemporalComponentForRoutes {};
 
-class TemporalLocalStorageService {
-    get(): string {
-        return '1'; 
-    }
-}
-
 describe('CategoriesListComponent', () => {
     let component: CategoriesListComponent;
     let fixture: ComponentFixture<CategoriesListComponent>;
+    let localStorageService: LocalStorageService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -37,7 +32,7 @@ describe('CategoriesListComponent', () => {
                 ])
             ],
             declarations: [CategoriesListComponent],
-            providers: [CategoryService, { provide: LocalStorageService, useClass: TemporalLocalStorageService }],
+            providers: [CategoryService, LocalStorageService],
             schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
         }).compileComponents();
     });
@@ -45,14 +40,15 @@ describe('CategoriesListComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(CategoriesListComponent);
         component = fixture.componentInstance;
+        localStorageService = TestBed.inject(LocalStorageService);
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('Ej4 - Test1 - should create', () => {
         expect(component).toBeTruthy();
     });
 
-    it('loadCategories success from subscription', () => {
+    it('Ej4 - Test2 - loadCategories success from subscription', () => {
         const categoryService = fixture.debugElement.injector.get(CategoryService);
         const categoriesList: CategoryDTO[] = [
             {
@@ -78,6 +74,7 @@ describe('CategoriesListComponent', () => {
             }
         ];
 
+        localStorageService.set('user_id', '1');
         const spy = spyOn(categoryService, 'getCategoriesByUserId').and.returnValue(of(categoriesList));
         component['loadCategories']();
         expect(spy).toHaveBeenCalledWith('1');
@@ -85,14 +82,14 @@ describe('CategoriesListComponent', () => {
         
     });
 
-    it('createCategory() should navigate to user/categories', () => {
+    it('Ej4 - Test3 - should createCategory success', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.createCategory();
         expect(spy).toHaveBeenCalledWith('/user/category/');
     });
 
-    it('updateCategory() should navigate to user/categories/1', () => {
+    it('Ej4 - Test4 - should updateCategory success', () => {
         const router = TestBed.inject(Router);
         const spy = spyOn(router, 'navigateByUrl');
         component.updateCategory('1');
