@@ -12,12 +12,6 @@ import { PostsListComponent } from './posts-list.component';
 
 class TemporalComponentForRoutes {};
 
-class TemporalLocalStorageService {
-    get(): string {
-        return '1'; 
-    }
-}
-
 const categoriesList: CategoryDTO[] = [
     {
         userId: '',
@@ -93,7 +87,7 @@ describe('PostsListComponent', () => {
                         component: TemporalComponentForRoutes
                     },
                     {
-                        path: 'user/post/1',
+                        path: 'user/post/:id',
                         component: TemporalComponentForRoutes
                     } 
                 ])

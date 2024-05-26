@@ -26,7 +26,7 @@ describe('CategoriesListComponent', () => {
                         component: TemporalComponentForRoutes
                     },
                     {
-                        path: 'user/category/1',
+                        path: 'user/category/:id',
                         component: TemporalComponentForRoutes
                     } 
                 ])
